@@ -1,0 +1,22 @@
+//* Required Dependencies OR node modules
+const express = require('express') // returns a function reference.
+const fs = require('fs')
+const path = require('path') // provides utilities for working with file and directory paths.
+
+//* Initialize express app
+// Initialize our app variable by setting it to the value of express()
+const app = express()
+const PORT = process.env.PORT || 3000
+
+//* Setting up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.static(__dirname))
+
+//* Require routes files
+require('./routes/routes')(app)
+
+//* Setting up listener to listen to connections
+app.listen(PORT, function () {
+  console.log('App listening on PORT: ' + PORT)
+})
