@@ -20,6 +20,7 @@ module.exports = (app) => {
       const newNote = req.body
       notes.push(newNote)
       updateDb()
+      res.json(req.body) //* makes the note show up when I click save now
       return console.log('Added new note: ' + newNote.title)
     })
 
@@ -32,6 +33,7 @@ module.exports = (app) => {
     app.delete('/api/notes/:id', function (req, res) {
       notes.splice(req.params.id, 1)
       updateDb()
+      res.json(req.body) //* makes the note deleted when you click delete
       console.log('Deleted note: ' + req.params.id)
     })
 
@@ -42,11 +44,11 @@ module.exports = (app) => {
     })
 
     //* Updates the json file whenever a note is added or deleted
-    // function updateDb() {
-    //   fs.writeFile('./db/db.json', JSON.stringify(notes, '\t'), (err) => {
-    //     if (err) throw err
-    //     return true
-    //   })
-    // }
+    function updateDb() {
+      fs.writeFile('./db/db.json', JSON.stringify(notes, '\t'), (err) => {
+        if (err) throw err
+        return true
+      })
+    }
   })
 }
