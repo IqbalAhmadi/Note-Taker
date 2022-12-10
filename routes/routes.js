@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = (app) => {
   // setup notes variables
-  fs.readFile('./Develop/db/db.json', 'utf8', (err, data) => {
+  fs.readFile('./db/db.json', 'utf8', (err, data) => {
     if (err) throw err
     const notes = JSON.parse(data)
 
@@ -42,11 +42,11 @@ module.exports = (app) => {
     })
 
     //* Updates the json file whenever a note is added or deleted
-    function updateDb() {
-      fs.writeFile('./db/db.json', JSON.stringify(notes, '\t'), (err) => {
-        if (err) throw err
-        return true
-      })
-    }
+    // function updateDb() {
+    //   fs.writeFile('./db/db.json', JSON.stringify(notes, '\t'), (err) => {
+    //     if (err) throw err
+    //     return true
+    //   })
+    // }
   })
 }

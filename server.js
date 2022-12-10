@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000
 //* Setting up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static(__dirname)) // Adding a static middleware for serving assets
+app.use(express.static(path.join(__dirname, 'public'))) // Adding a static middleware for serving assets
 
 //* Require routes files
 require('./routes/routes')(app)
