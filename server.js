@@ -3,8 +3,7 @@ const express = require('express') // returns a function reference.
 const fs = require('fs')
 const path = require('path') // provides utilities for working with file and directory paths.
 
-//* Initialize express app
-// Initialize our app variable by setting it to the value of express()
+//* Initializing express & port number
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -18,5 +17,5 @@ require('./routes/routes')(app)
 
 //* Setting up listener to listen to connections
 app.listen(PORT, function () {
-  console.log('App listening on PORT: ' + PORT)
+  console.log(`App listening at http://localhost:${PORT}`)
 })

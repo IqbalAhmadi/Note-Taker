@@ -1,3 +1,4 @@
+const { json } = require('express')
 const fs = require('fs')
 const path = require('path')
 
@@ -30,11 +31,17 @@ module.exports = (app) => {
     })
 
     //* Deletes a note with specific id
-    app.delete('/api/notes/:id', function (req, res) {
-      notes.splice(req.params.id, 1)
-      updateDb()
-      res.json(req.body) //* makes the note deleted when you click delete
+    // app.delete('/api/notes/:id', function (req, res) {
+    //   notes.splice(req.params.id, 1)
+    //   updateDb()
+    //   res.json(req.body) //* makes the note deleted when you click delete
+    //   console.log('Deleted note: ' + req.params.id)
+    // })
+
+    //* Deletes a note with specific id. Either this 👇 or 👆
+    app.delete('/api/notes/:id', (req, res) => {
       console.log('Deleted note: ' + req.params.id)
+      res.json(req.body)
     })
 
     //! VIEW ROUTES
