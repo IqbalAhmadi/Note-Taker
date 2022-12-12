@@ -41,6 +41,7 @@ module.exports = (app) => {
     //* Deletes a note with specific id. Either this 👇 or 👆
     app.delete('/api/notes/:id', (req, res) => {
       console.log('Deleted note: ' + req.params.id)
+      let noteId = req.params.id.toString()
       res.json(req.body)
     })
 
