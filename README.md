@@ -1,140 +1,86 @@
-# 11 Express.js: Note Taker
+# Note Taker
 
-## Your Task
+[Click Here for Deployed Link](https://iqbalahmadi.github.io/Note-Taker/)
 
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+## Description 📜
 
-The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+This is a note taking application that provides you with a window where you can add note that contains a title and text. Also you will be able to save it. This application also give you the benefit of deleting a note already saved.
 
+# Table of Contents
 
-## User Story
+- [Technology](#technology)
+- [Usage](#usage)
+- [Features](#features)
+- [License](#license)
+- [Contribution](#contribution)
+- [Questions](#questions)
+
+# Business Context
+
+- For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important.
+
+- Being able to take persistent notes allows users to have written information available when needed.
+
+# Application Preview
+
+| Main Page                                        | Saved Notes                                         | Delete Note                                         |
+| ------------------------------------------------ | --------------------------------------------------- | --------------------------------------------------- |
+| ![Main Page](public/assets/images/NoteTaker.png) | ![Saved Notes](public/assets/images/SavedNotes.png) | ![Delete Note](public/assets/images/DeleteNote.png) |
+
+# Technology
+
+**1. [Express.js](https://expressjs.com/)** :
+
+- Web Applications : Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+
+- APIs : With a myriad of HTTP utility methods and middleware, creating a robust API is quick and easy.
+
+- Performance : Express provides a thin layer of fundamental web application features, without obscuring Node.js features.
+
+**2. [Node.js](https://nodejs.org/en/)** :
+
+- Node.js is an open-source and cross-platform JavaScript runtime environment.
+
+- A Node.js app is run in a single process, without creating a new thread for every request.
+
+- Node.js provides a set of asynchronous I/O primitives in its standard library that prevent JavaScript code from blocking.
+
+# Usage
+
+- Clone this repository to use this application on local machine.
+
+- To install necessary dependencies, run the following command :
 
 ```
-AS A small business owner
-I WANT to be able to write and save notes
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
+npm i
 ```
 
-
-## Acceptance Criteria
+- The application will be invoked with the following command: This will start localhost server on PORT 3000.
 
 ```
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
+node server.js
 ```
 
+- Open browser and type `http://localhost:3000/` to run this application on your local machine.
 
-## Mock-Up
+# Features :
 
-The following images show the web application's appearance and functionality:
+1. Used 'Express.js' to build server
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo-01.png)
+2. Used 'fs(File System)' module to read and write from 'db.json' file.
 
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-homework-demo-02.png)
+3. Application is deployed on [heroku](https://www.heroku.com/) : Heroku is a container-based cloud Platform as a Service (PaaS). Developers use Heroku to deploy, manage, and scale modern apps.
 
+# License
 
-## Getting Started
+This project is licensed under MIT license.
 
-On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
+# Contribution
 
-The following HTML routes should be created:
+Pull requests are always welcome!
 
-* `GET /notes` should return the `notes.html` file.
+# Questions
 
-* `GET *` should return the `index.html` file.
-
-The following API routes should be created:
-
-* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
-
-* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
-
-
-## Bonus
-
-You haven’t learned how to handle DELETE requests, but this application offers that functionality on the front end. As a bonus, try to add the DELETE route to the application using the following guideline:
-
-* `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-
-
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria: 
-
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Application front end must connect to an Express.js back end.
-
-  * Application back end must store notes that have a unique id in a JSON file.
-
-  * Application must be deployed to Heroku.
-
-
-### Deployment: 36%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-
-### Application Quality: 11%
-
-* Application console is free of errors.
-
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-### Bonus: +10 Points
-
-* Application allows users to delete notes.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+If you have any questions about the repo,
+[open an issue](https://github.com/IqbalAhmadi/Note-Taker/issues)
+or contact me directly at [Email](mailto:iqb.ahmadi@gmail.com).
