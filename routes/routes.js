@@ -30,20 +30,51 @@ module.exports = (app) => {
       res.json(notes.get[req.params.id])
     })
 
-    //* Deletes a note with specific id
+    // //* Deletes a note with specific id
+    app.delete('/api/notes/:id', function (req, res) {
+      const delNote = req.body
+      console.log(delNote.title)
+      notes.splice(req.params.id, 1)
+      updateDb()
+      res.json(req.body.id) //* makes the note deleted when you click delete
+      console.log('Deleted note: ' + req.params.id)
+    })
+
+    // another way
     // app.delete('/api/notes/:id', function (req, res) {
-    //   notes.splice(req.params.id, 1)
+    //   const id = req.params.id
+    //   notes = notes.filter((note) => note.id !== id)
     //   updateDb()
-    //   res.json(req.body) //* makes the note deleted when you click delete
-    //   console.log('Deleted note: ' + req.params.id)
+    //   res.json(req.body) // Makes the note deleted when you click delete
+    //   console.log('Deleted note: ' + id)
     // })
 
-    //* Deletes a note with specific id. Either this 👇 or 👆
-    app.delete('/api/notes/:id', (req, res) => {
-      console.log('Deleted note: ' + req.params.id)
-      let noteId = req.params.id.toString()
-      res.json(req.body)
-    })
+    // //* Deletes a note with specific id. Either this 👇 or 👆
+    // app.delete('/api/notes/:id', (req, res) => {
+    //   console.log('Deleted note: ' + req.params.id)
+    //   let noteId = req.params.id.toString()
+    //   res.json(req.body.id)
+    // })
+
+    //delete a note by specific id
+    // app.delete('/api/notes/:id', (req, res) => {
+    //   console.info(req.method)
+    //   const delNoteID = req.params.id
+    //   const readFromFile = require('./routes/routes.js')
+    //   readFromFile('./db/db.json')
+    //     .then((data) => JSON.parse(data))
+    //     .then((json) => {
+    //       //the result will be returned as an array with all of the notes except the note with id that was passed in as a param
+    //       const result = json.filter((note) => note.id !== delNoteID)
+    //       console.log(result)
+
+    //       //re-write the result array to db.json
+    //       writeToFile('./db/db.json', result)
+
+    //       //response to let client know delete request has been completed
+    //       res.json(`note with ${delNoteID} has been deleted`)
+    //     })
+    // })
 
     //! VIEW ROUTES
     //* Display notes.html when /notes is accessed
